@@ -47,6 +47,14 @@ def test_modulus():
     with pytest.raises(ValueError):
         op.execute(7, 0)
 
+def test_integer_division():
+    op = OperationFactory.create("int_divide")
+    assert op.execute(10, 3) == 3
+    assert op.execute(9, 3) == 3
+    assert op.execute(-10, 3) == -4
+    with pytest.raises(ValueError):
+        op.execute(5, 0)
+
 def test_invalid_operation():
     with pytest.raises(ValueError):
         OperationFactory.create("invalid_op")

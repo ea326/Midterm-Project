@@ -31,3 +31,9 @@ class Modulus:
         if b == 0:
             raise ValueError("Cannot perform modulus by zero.")
         return a % b
+
+class IntegerDivision:
+    def execute(self, a, b):
+        if b == 0:
+            raise ValueError("Cannot divide by zero.")
+        return a // b
