@@ -55,6 +55,13 @@ def test_integer_division():
     with pytest.raises(ValueError):
         op.execute(5, 0)
 
+def test_percentage():
+    op = OperationFactory.create("percent")
+    assert round(op.execute(25, 100), 5) == 25.0
+    assert round(op.execute(50, 200), 5) == 25.0
+    with pytest.raises(ValueError):
+        op.execute(10, 0)
+
 def test_invalid_operation():
     with pytest.raises(ValueError):
         OperationFactory.create("invalid_op")

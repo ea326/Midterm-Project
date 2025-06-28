@@ -1,4 +1,4 @@
-from app.operations import Addition, Subtraction, Multiplication, Division, Power, Root, Modulus, IntegerDivision
+from app.operations import Addition, Subtraction, Multiplication, Division, Power, Root, Modulus, IntegerDivision, Percentage
 
 class OperationFactory:
     @staticmethod
@@ -19,5 +19,7 @@ class OperationFactory:
             return Modulus()
         elif operation_type == "int_divide":
             return IntegerDivision()
+        elif operation_type == "percent":
+            return Percentage()
         else:
             raise ValueError(f"Invalid operation type: {operation_type}")

@@ -37,3 +37,9 @@ class IntegerDivision:
         if b == 0:
             raise ValueError("Cannot divide by zero.")
         return a // b
+    
+class Percentage:
+    def execute(self, a, b):
+        if b == 0:
+            raise ValueError("Cannot calculate percentage with denominator zero.")
+        return (a / b) * 100
