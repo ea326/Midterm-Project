@@ -20,3 +20,6 @@ class History:
         calc = self._redo_stack.pop()
         self._history.append(calc)
         return calc
+
+    def get_history(self):
+        return list(self._history)
