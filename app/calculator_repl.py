@@ -3,7 +3,7 @@ from app.calculator import OperationFactory
 def calculator_repl():
     print("Welcome to the calculator.")
     print("Usage: operation number1 number2 (e.g., add 4 5)")
-    print("Available operations: add, subtract, multiply, divide")
+    print("Available operations: add, subtract, multiply, divide, power, root")
 
     while True:
         try:

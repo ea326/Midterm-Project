@@ -19,3 +19,9 @@ class Division:
 class Power:
     def execute(self, a, b):
         return a ** b
+
+class Root:
+    def execute(self, a, b):
+        if b == 0:
+            raise ValueError("Cannot take the 0th root.")
+        return a ** (1 / b)

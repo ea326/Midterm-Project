@@ -33,6 +33,13 @@ def test_power():
     assert op.execute(5, 0) == 1
     assert op.execute(4, 0.5) == 2  # square root
 
+def test_root():
+    op = OperationFactory.create("root")
+    assert round(op.execute(27, 3), 5) == 3  # cube root
+    assert round(op.execute(16, 2), 5) == 4  # square root
+    with pytest.raises(ValueError):
+        op.execute(25, 0)  # invalid root
+
 def test_invalid_operation():
     with pytest.raises(ValueError):
         OperationFactory.create("invalid_op")
