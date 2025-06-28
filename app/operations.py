@@ -15,3 +15,7 @@ class Division:
         if b == 0:
             raise ZeroDivisionError("Cannot divide by zero.")
         return a / b
+
+class Power:
+    def execute(self, a, b):
+        return a ** b

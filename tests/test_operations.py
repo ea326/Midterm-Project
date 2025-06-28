@@ -27,6 +27,12 @@ def test_division_by_zero():
     with pytest.raises(ZeroDivisionError):
         op.execute(5, 0)
 
+def test_power():
+    op = OperationFactory.create("power")
+    assert op.execute(2, 3) == 8
+    assert op.execute(5, 0) == 1
+    assert op.execute(4, 0.5) == 2  # square root
+
 def test_invalid_operation():
     with pytest.raises(ValueError):
         OperationFactory.create("invalid_op")
