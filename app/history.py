@@ -13,3 +13,10 @@ class History:
         calc = self._history.pop()
         self._redo_stack.append(calc)
         return calc
+
+    def redo(self):
+        if not self._redo_stack:
+            raise IndexError("No operations to redo.")
+        calc = self._redo_stack.pop()
+        self._history.append(calc)
+        return calc
