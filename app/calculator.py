@@ -1,4 +1,4 @@
-from app.operations import Addition, Subtraction, Multiplication, Division, Power, Root
+from app.operations import Addition, Subtraction, Multiplication, Division, Power, Root, Modulus
 
 class OperationFactory:
     @staticmethod
@@ -15,5 +15,7 @@ class OperationFactory:
             return Power()
         elif operation_type == "root":
             return Root()
+        elif operation_type == "modulus":
+            return Modulus()
         else:
             raise ValueError(f"Invalid operation type: {operation_type}")

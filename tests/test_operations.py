@@ -40,6 +40,13 @@ def test_root():
     with pytest.raises(ValueError):
         op.execute(25, 0)  # invalid root
 
+def test_modulus():
+    op = OperationFactory.create("modulus")
+    assert op.execute(10, 3) == 1
+    assert op.execute(25, 5) == 0
+    with pytest.raises(ValueError):
+        op.execute(7, 0)
+
 def test_invalid_operation():
     with pytest.raises(ValueError):
         OperationFactory.create("invalid_op")

@@ -25,3 +25,9 @@ class Root:
         if b == 0:
             raise ValueError("Cannot take the 0th root.")
         return a ** (1 / b)
+
+class Modulus:
+    def execute(self, a, b):
+        if b == 0:
+            raise ValueError("Cannot perform modulus by zero.")
+        return a % b
