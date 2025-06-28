@@ -23,3 +23,7 @@ class History:
 
     def get_history(self):
         return list(self._history)
+
+    def clear(self):
+        self._history.clear()
+        self._redo_stack.clear()
