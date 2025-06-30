@@ -2,10 +2,19 @@ class History:
     def __init__(self):
         self._history = []
         self._redo_stack = []
+        self._observers = []  
+
+    def register_observer(self, observer):  
+        self._observers.append(observer)
+    
+    def notify_observers(self, calculation):
+        for observer in self._observers:
+            observer.update(calculation)
 
     def add_calculation(self, calculation):
         self._history.append(calculation)
         self._redo_stack.clear()
+        self.notify_observers(calculation)
 
     def undo(self):
         if not self._history:
