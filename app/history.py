@@ -3,7 +3,7 @@ class History:
         self._history = []
         self._redo_stack = []
 
-    def add(self, calculation):
+    def add_calculation(self, calculation):
         self._history.append(calculation)
         self._redo_stack.clear()
 

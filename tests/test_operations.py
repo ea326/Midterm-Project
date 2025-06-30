@@ -62,6 +62,12 @@ def test_percentage():
     with pytest.raises(ValueError):
         op.execute(10, 0)
 
+def test_absolute_difference():
+    op = OperationFactory.create("abs_diff")
+    assert op.execute(10, 3) == 7
+    assert op.execute(3, 10) == 7
+    assert op.execute(-5, -10) == 5
+
 def test_invalid_operation():
     with pytest.raises(ValueError):
         OperationFactory.create("invalid_op")

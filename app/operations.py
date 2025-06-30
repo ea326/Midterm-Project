@@ -43,3 +43,8 @@ class Percentage:
         if b == 0:
             raise ValueError("Cannot calculate percentage with denominator zero.")
         return (a / b) * 100
+    
+class AbsoluteDifference:
+    def execute(self, a, b):
+        return abs(a - b)
+
