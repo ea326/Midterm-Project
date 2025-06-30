@@ -1,11 +1,12 @@
 from datetime import datetime
+from app.calculator_config import CALCULATOR_PRECISION
 
 class Calculation:
     def __init__(self, operation, a, b, result):
         self.operation = operation
         self.a = a
         self.b = b
-        self.result = result
+        self.result = round(result, CALCULATOR_PRECISION)
         self.timestamp = datetime.now()
 
     def __str__(self):
