@@ -1,8 +1,13 @@
 from app.calculation import Calculation
 from app.calculator import OperationFactory
 from app.history import History
+from app.logger import LoggingObserver
+from app.auto_save import AutoSaveObserver
+
 
 history = History()
+history.register_observer(LoggingObserver())
+history.register_observer(AutoSaveObserver())
 
 def calculator_repl():
     print("Welcome to the calculator.")
