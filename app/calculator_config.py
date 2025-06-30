@@ -16,3 +16,7 @@ CALCULATOR_AUTO_SAVE = os.getenv("CALCULATOR_AUTO_SAVE", "true").lower() == "tru
 CALCULATOR_PRECISION = int(os.getenv("CALCULATOR_PRECISION", 2))
 CALCULATOR_MAX_INPUT_VALUE = float(os.getenv("CALCULATOR_MAX_INPUT_VALUE", 100000))
 CALCULATOR_DEFAULT_ENCODING = os.getenv("CALCULATOR_DEFAULT_ENCODING", "utf-8")
+
+# Ensure log and history directories exist
+os.makedirs(CALCULATOR_LOG_DIR, exist_ok=True)
+os.makedirs(CALCULATOR_HISTORY_DIR, exist_ok=True)
