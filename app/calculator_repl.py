@@ -1,12 +1,12 @@
+import logging
 from app.input_validators import validate_input
 from app.calculation import Calculation
 from app.calculator import OperationFactory
-from app.history import History
+from app.history import history
 from app.logger import LoggingObserver
 from app.auto_save import AutoSaveObserver
+from app.exceptions import ValidationError
 
-
-history = History()
 history.register_observer(LoggingObserver())
 history.register_observer(AutoSaveObserver())
 
@@ -52,7 +52,6 @@ def calculator_repl():
             a = validate_input(num1)
             b = validate_input(num2)
 
-
             operation = OperationFactory.create(op_type)
             result = operation.execute(a, b)
             print(f"Result: {result}\n")
@@ -60,9 +59,19 @@ def calculator_repl():
             calculation = Calculation(operation, a, b, result)
             history.add_calculation(calculation)
 
+        except ValidationError as ve:
+            logging.error(f"ValidationError: {ve}")
+            print(f"Validation error: {ve}")
+
         except ValueError as ve:
+            logging.error(f"ValueError: {ve}")
             print(f"Error: {ve}")
+
         except ZeroDivisionError:
+            logging.error("ZeroDivisionError: Cannot divide by zero.")
             print("Error: Cannot divide by zero.")
+
         except Exception as e:
+            logging.exception(f"Unexpected error: {e}")
             print(f"Unexpected error: {e}")
+
