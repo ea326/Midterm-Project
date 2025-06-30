@@ -6,13 +6,19 @@ class AutoSaveObserver(Observer):
         self.file_path = file_path
 
     def update(self, calculation):
-        from app.history import history  # delay import to avoid circular dependency
         data = [{
-            'operation': calc.operation.__class__.__name__,
-            'a': calc.a,
-            'b': calc.b,
-            'result': calc.result,
-            'timestamp': calc.timestamp
-        } for calc in history.get_history()]
+            'operation': calculation.operation.__class__.__name__,
+            'a': calculation.a,
+            'b': calculation.b,
+            'result': calculation.result,
+            'timestamp': calculation.timestamp
+        }]
         df = pd.DataFrame(data)
-        df.to_csv(self.file_path, index=False)
+        df.to_csv(self.file_path, mode='a', index=False, header=not self._file_exists())
+
+    def _file_exists(self):
+        try:
+            with open(self.file_path, 'r'):
+                return True
+        except FileNotFoundError:
+            return False
