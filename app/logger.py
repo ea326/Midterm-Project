@@ -1,14 +1,14 @@
 import logging
-from app.observer import Observer
+import os
+from datetime import datetime
+from app.calculator_config import CALCULATOR_LOG_DIR
 
-class LoggingObserver(Observer):
-    def __init__(self, log_file='calculator.log'):
-        logging.basicConfig(
-            filename=log_file,
-            level=logging.INFO,
-            format='%(asctime)s - %(message)s'
-        )
-        self.logger = logging.getLogger()
+os.makedirs(CALCULATOR_LOG_DIR, exist_ok=True)
 
-    def update(self, calculation):
-        self.logger.info(str(calculation))
+log_file_path = os.path.join(CALCULATOR_LOG_DIR, "calculator.log")
+
+logging.basicConfig(
+    filename=log_file_path,
+    level=logging.INFO,
+    format="%(asctime)s - %(message)s",
+)
