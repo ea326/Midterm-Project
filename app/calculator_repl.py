@@ -1,3 +1,4 @@
+from app.input_validators import validate_input
 from app.calculation import Calculation
 from app.calculator import OperationFactory
 from app.history import History
@@ -48,8 +49,9 @@ def calculator_repl():
                 continue
 
             op_type, num1, num2 = parts
-            a = float(num1)
-            b = float(num2)
+            a = validate_input(num1)
+            b = validate_input(num2)
+
 
             operation = OperationFactory.create(op_type)
             result = operation.execute(a, b)
