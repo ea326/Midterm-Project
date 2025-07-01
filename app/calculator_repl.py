@@ -14,7 +14,7 @@ def calculator_repl():
     print("Welcome to the calculator.")
     print("Usage: operation number1 number2 (e.g., add 4 5)")
     print("Available operations: add, subtract, multiply, divide, power, root, modulus, int_divide, percent, abs_diff")
-    print("Other commands: history, undo, redo, clear, exit")
+    print("Other commands: history, undo, redo, clear, save, load, help, exit")
 
     while True:
         try:
@@ -41,6 +41,29 @@ def calculator_repl():
             if user_input == "clear":
                 history.clear()
                 print("History cleared.")
+                continue
+
+            if user_input == "save":
+                history.save_to_file()
+                print("History saved.")
+                continue
+
+            if user_input == "load":
+                history.load_from_file()
+                print("History loaded.")
+                continue
+
+            if user_input == "help":
+                print("Supported commands:")
+                print("  add, subtract, multiply, divide, power, root, modulus, int_divide, percent, abs_diff")
+                print("  history - Show calculation history")
+                print("  clear   - Clear history")
+                print("  undo    - Undo last calculation")
+                print("  redo    - Redo last undone calculation")
+                print("  save    - Save history to file")
+                print("  load    - Load history from file")
+                print("  help    - Show this help menu")
+                print("  exit    - Exit the calculator")
                 continue
 
             parts = user_input.split()
@@ -74,4 +97,3 @@ def calculator_repl():
         except Exception as e:
             logging.exception(f"Unexpected error: {e}")
             print(f"Unexpected error: {e}")
-

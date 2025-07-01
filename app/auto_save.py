@@ -2,6 +2,7 @@ import os
 import pandas as pd
 from app.observer import Observer
 from app.calculator_config import CALCULATOR_HISTORY_DIR, CALCULATOR_AUTO_SAVE
+from app.history import history
 
 class AutoSaveObserver(Observer):
     def __init__(self):
@@ -12,7 +13,6 @@ class AutoSaveObserver(Observer):
         if not CALCULATOR_AUTO_SAVE:
             return
 
-        from app.history import history  # delayed to avoid circular import
         data = [{
             'operation': calc.operation.__class__.__name__,
             'a': calc.a,
